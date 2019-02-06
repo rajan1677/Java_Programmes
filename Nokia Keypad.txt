@@ -1,0 +1,63 @@
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+public class Tuti1 
+{
+	 static int asp=0;
+	 static int timepass=0;
+	public static void main(String[] args) 
+	{
+		int ascii=97;
+		char a[]=new char[1001];
+		char b[]=new char[10];
+		int j=1,m=0;
+		int p=0;
+		Scanner s=new Scanner(System.in);
+        for(j=1;j<=9;j++)
+        {
+        	if(j!=7)
+        	{
+             p=j;
+             m=j;
+             a[p]=(char)ascii;
+             p=p*10+m;
+             ascii=ascii+1;
+             a[p]=(char)ascii;
+             p=p*10+m;
+             ascii=ascii+1;
+             a[p]=(char)ascii;
+             ascii=ascii+1;
+            }
+        	else
+        	{
+        	  p=j;
+        	  m=j;
+        	  a[p]=(char)ascii;
+        	  p=p*10+p;
+        	  ascii=ascii+1;
+        	  a[p]=(char)ascii;
+        	  ascii=ascii+1;
+        	 }
+        }
+        
+        System.out.print("Enter a number");
+    	Timer t=new Timer();
+    	TimerTask tsk=new TimerTask() 
+    	{
+    		public void run()
+    		{
+    		int input=s.nextInt();
+    		b[asp]=a[input];
+    		asp=asp+1;
+    		timepass=timepass+1;
+    		if(timepass==10)
+    		    {
+    			String ade=new String(b);
+    	    	System.out.print(ade);
+    			t.cancel();
+    		    }
+    		}
+    	};
+    	t.scheduleAtFixedRate(tsk,0,1000);
+	}
+}
